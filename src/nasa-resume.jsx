@@ -151,19 +151,19 @@ function CareerTimeline() {
             return (
               <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", position: "relative", minWidth: 120, opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(12px)", transition: `all 0.5s ease ${i * 0.08}s` }}>
                 {/* Number */}
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#555", letterSpacing: 2, marginBottom: 10, fontWeight: 700 }}>{num}</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: "#555", letterSpacing: 2, marginBottom: 10, fontWeight: 700 }}>{num}</div>
 
                 {/* Dot */}
-                <div style={{ width: isActive ? 10 : 8, height: isActive ? 10 : 8, borderRadius: "50%", background: isActive ? "#FC3D21" : "transparent", border: isActive ? "none" : "1.5px solid rgba(255,255,255,0.25)", boxShadow: isActive ? "0 0 12px rgba(252,61,33,0.4)" : "none", marginBottom: 14, position: "relative", zIndex: 1 }} />
+                <div style={{ width: isActive ? 12 : 10, height: isActive ? 12 : 10, borderRadius: "50%", background: isActive ? "#FC3D21" : "transparent", border: isActive ? "none" : "1.5px solid rgba(255,255,255,0.25)", boxShadow: isActive ? "0 0 12px rgba(252,61,33,0.4)" : "none", marginBottom: 14, position: "relative", zIndex: 1 }} />
 
                 {/* Company */}
-                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 600, color: isActive ? "#fff" : "#888", letterSpacing: 1, textAlign: "center", lineHeight: 1.3, textTransform: "uppercase" }}>{exp.company}</div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, fontWeight: 600, color: isActive ? "#fff" : "#888", letterSpacing: 1, textAlign: "center", lineHeight: 1.3, textTransform: "uppercase" }}>{exp.company}</div>
 
                 {/* Role */}
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, color: "#555", marginTop: 4, textAlign: "center", letterSpacing: 1 }}>{exp.role.split(" ").slice(0, 2).join(" ")}</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#555", marginTop: 4, textAlign: "center", letterSpacing: 1 }}>{exp.role.split(" ").slice(0, 2).join(" ")}</div>
 
                 {/* Year */}
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, color: "#444", marginTop: 4 }}>{exp.year}</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#444", marginTop: 4 }}>{exp.year}</div>
               </div>
             );
           })}
@@ -178,8 +178,8 @@ function CareerTimeline() {
 function SectionLabel({ number, text }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>
-      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#444", letterSpacing: 2, fontWeight: 700 }}>{number}</span>
-      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#555", letterSpacing: 5, textTransform: "uppercase" }}>{text}</span>
+      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: "#444", letterSpacing: 2, fontWeight: 700 }}>{number}</span>
+      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: "#555", letterSpacing: 5, textTransform: "uppercase" }}>{text}</span>
       <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.06)" }} />
     </div>
   );
@@ -191,8 +191,8 @@ function Metric({ label, value, delay = 0 }) {
   const [ref, vis] = useReveal();
   return (
     <div ref={ref} style={{ marginBottom: 36, opacity: vis ? 1 : 0, transform: vis ? "translateX(0)" : "translateX(12px)", transition: `all 0.6s ease ${delay}s` }}>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 3, color: "#555", textTransform: "uppercase", marginBottom: 6 }}>{label}</div>
-      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 22, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>{value}</div>
+      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3, color: "#555", textTransform: "uppercase", marginBottom: 6, textAlign: "right" }}>{label}</div>
+      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 31, fontWeight: 700, color: "#fff", letterSpacing: 1, textAlign: "right" }}>{value}</div>
     </div>
   );
 }
@@ -218,31 +218,31 @@ function ExpCard({ exp, index, expanded, toggle }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24 }}>
         <div style={{ display: "flex", gap: 32, alignItems: "flex-start", flex: 1, flexWrap: "wrap" }}>
           {/* Period */}
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#555", letterSpacing: 1, minWidth: 140, paddingTop: 4 }}>{exp.period}</div>
+          <div className="exp-period" style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: "#555", letterSpacing: 1, minWidth: 170, paddingTop: 6 }}>{exp.period}</div>
 
           <div>
             {/* Company + active dot */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 18, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>{exp.company}</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 25, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>{exp.company}</span>
               {exp.active && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#FC3D21", boxShadow: "0 0 8px rgba(252,61,33,0.5)", display: "inline-block" }} />}
             </div>
 
             {/* Role + Location */}
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#777", letterSpacing: 2, marginTop: 6, textTransform: "uppercase" }}>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: "#777", letterSpacing: 2, marginTop: 6, textTransform: "uppercase" }}>
               {exp.role} &nbsp;·&nbsp; {exp.location}
             </div>
           </div>
         </div>
 
         {/* Toggle */}
-        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 18, color: "#555", transition: "transform 0.25s, color 0.2s", transform: isOpen ? "rotate(45deg)" : "rotate(0)", flexShrink: 0, lineHeight: 1, paddingTop: 4 }}>+</div>
+        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 25, color: "#555", transition: "transform 0.25s, color 0.2s", transform: isOpen ? "rotate(45deg)" : "rotate(0)", flexShrink: 0, lineHeight: 1, paddingTop: 4 }}>+</div>
       </div>
 
       {/* Expanded outcomes */}
       {isOpen && (
         <div style={{ marginTop: 20, paddingLeft: 172, animation: "fadeUp 0.3s ease both" }}>
           {exp.outcomes.map((o, j) => (
-            <div key={j} style={{ display: "flex", gap: 12, fontSize: 13, color: "#999", lineHeight: 1.8, marginBottom: 4, animation: `fadeUp 0.25s ease ${j * 0.04}s both` }}>
+            <div key={j} style={{ display: "flex", gap: 12, fontSize: 18, color: "#999", lineHeight: 1.8, marginBottom: 4, animation: `fadeUp 0.25s ease ${j * 0.04}s both` }}>
               <span style={{ color: "#444", flexShrink: 0 }}>—</span>
               <span>{o}</span>
             </div>
@@ -292,10 +292,10 @@ export default function NASAResume() {
       {/* ─── NAV ─────────────────────────────────────────────────────────────── */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "18px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <img src="/nasa-worm.svg" alt="NASA" style={{ height: 18, opacity: 0.9 }} />
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 3, color: "#555", textTransform: "uppercase", borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: 16 }}>Creative Division</span>
+          <img src="/nasa-worm.svg" alt="NASA" style={{ height: 24, opacity: 0.9 }} />
+          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3, color: "#555", textTransform: "uppercase", borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: 16 }}>Creative Division</span>
         </div>
-        <div style={{ display: "flex", gap: 28, fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 3, textTransform: "uppercase" }}>
+        <div style={{ display: "flex", gap: 28, fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3, textTransform: "uppercase" }}>
           <span style={{ color: "#FC3D21" }}>Manifest</span>
           <span style={{ color: "#555" }}>Experience</span>
           <span style={{ color: "#555" }}>Systems</span>
@@ -309,19 +309,19 @@ export default function NASAResume() {
 
           {/* Left — Identity */}
           <div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 4, color: "#555", marginBottom: 24, textTransform: "uppercase" }}>Crew Manifest // Creative Division</div>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, letterSpacing: 4, color: "#555", marginBottom: 24, textTransform: "uppercase" }}>Crew Manifest // Creative Division</div>
 
-            <h1 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 900, fontSize: "clamp(40px, 6vw, 80px)", color: "#fff", lineHeight: 1, letterSpacing: "-1px", marginBottom: 8 }}>
+            <h1 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 900, fontSize: "clamp(56px, 8.5vw, 112px)", color: "#fff", lineHeight: 1, letterSpacing: "-1px", marginBottom: 12 }}>
               DIEGO<br />SAENZ
             </h1>
 
             {/* Red underline */}
-            <div style={{ width: 40, height: 2, background: "#FC3D21", marginBottom: 24, animation: heroVis ? "redLine 0.6s ease 0.4s both" : "none", transformOrigin: "left" }} />
+            <div style={{ width: 50, height: 3, background: "#FC3D21", marginBottom: 28, animation: heroVis ? "redLine 0.6s ease 0.4s both" : "none", transformOrigin: "left" }} />
 
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: 4, color: "#777", textTransform: "uppercase", marginBottom: 8 }}>Creative Director</div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: 4, color: "#555", textTransform: "uppercase" }}>AI Developer</div>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 14, letterSpacing: 4, color: "#777", textTransform: "uppercase", marginBottom: 8 }}>Creative Director</div>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 14, letterSpacing: 4, color: "#555", textTransform: "uppercase" }}>AI Developer</div>
 
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#444", marginTop: 32, letterSpacing: 2 }}>
+            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 13, color: "#444", marginTop: 32, letterSpacing: 2 }}>
               AUSTIN, TX &nbsp;·&nbsp; {years > 0 ? years : 15}+ YRS
             </div>
           </div>
@@ -363,9 +363,9 @@ export default function NASAResume() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40 }}>
             {SYSTEMS.map((cat, ci) => (
               <div key={cat.category} style={{ opacity: skillVis ? 1 : 0, transform: skillVis ? "translateY(0)" : "translateY(12px)", transition: `all 0.5s ease ${ci * 0.1}s` }}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 4, color: "#444", marginBottom: 16, textTransform: "uppercase", fontWeight: 700 }}>{cat.category}</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 4, color: "#444", marginBottom: 16, textTransform: "uppercase", fontWeight: 700 }}>{cat.category}</div>
                 {cat.items.map(item => (
-                  <div key={item} style={{ fontSize: 13, color: "#888", lineHeight: 2.2 }}>{item}</div>
+                  <div key={item} style={{ fontSize: 18, color: "#888", lineHeight: 2.2 }}>{item}</div>
                 ))}
               </div>
             ))}
@@ -385,8 +385,8 @@ export default function NASAResume() {
               { label: "Portfolio", value: "itsmediego.com" },
             ].map((c, i) => (
               <div key={c.label} style={{ opacity: contactVis ? 1 : 0, transition: `all 0.5s ease ${i * 0.08}s` }}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 3, color: "#444", textTransform: "uppercase", marginBottom: 8 }}>{c.label}</div>
-                <div style={{ fontSize: 14, color: "#fff", fontWeight: 500 }}>{c.value}</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3, color: "#444", textTransform: "uppercase", marginBottom: 8 }}>{c.label}</div>
+                <div style={{ fontSize: 20, color: "#fff", fontWeight: 500 }}>{c.value}</div>
               </div>
             ))}
           </div>
@@ -396,7 +396,7 @@ export default function NASAResume() {
       {/* ─── FOOTER ──────────────────────────────────────────────────────────── */}
       <footer style={{ textAlign: "center", paddingBottom: 80, position: "relative", zIndex: 1 }}>
         <div style={{ width: 60, height: 1, background: "rgba(255,255,255,0.08)", margin: "0 auto 20px" }} />
-        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 4, color: "#333", textTransform: "uppercase" }}>
+        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 4, color: "#333", textTransform: "uppercase" }}>
           NCD-2026 &nbsp;·&nbsp; NASA Creative Division &nbsp;·&nbsp; Classification: Open
         </div>
       </footer>
