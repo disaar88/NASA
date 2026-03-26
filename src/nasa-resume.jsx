@@ -289,6 +289,20 @@ export default function NASAResume() {
 
       <Stars />
 
+      {/* ─── NAV ─────────────────────────────────────────────────────────────── */}
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "18px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <img src="/nasa-worm.svg" alt="NASA" style={{ height: 18, opacity: 0.9 }} />
+          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 3, color: "#555", textTransform: "uppercase", borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: 16 }}>Creative Division</span>
+        </div>
+        <div style={{ display: "flex", gap: 28, fontFamily: "'Space Mono', monospace", fontSize: 8, letterSpacing: 3, textTransform: "uppercase" }}>
+          <span style={{ color: "#FC3D21" }}>Manifest</span>
+          <span style={{ color: "#555" }}>Experience</span>
+          <span style={{ color: "#555" }}>Systems</span>
+          <span style={{ color: "#555" }}>Comms</span>
+        </div>
+      </nav>
+
       {/* ─── HERO ────────────────────────────────────────────────────────────── */}
       <section ref={heroRef} style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", zIndex: 1, padding: "80px 40px" }}>
         <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "60px", maxWidth: 1200, width: "100%", alignItems: "center", opacity: heroVis ? 1 : 0, transform: heroVis ? "translateY(0)" : "translateY(30px)", transition: "all 1s ease" }}>
