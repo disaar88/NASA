@@ -253,11 +253,93 @@ function ExpCard({ exp, index, expanded, toggle }) {
   );
 }
 
+/* ─── AI LOADER — inspired by Gleb Kuznetsov's Rokid loader ────────────────── */
+
+function AILoader({ onComplete }) {
+  const [fadeOut, setFadeOut] = useState(false);
+  useEffect(() => {
+    const t1 = setTimeout(() => setFadeOut(true), 3200);
+    const t2 = setTimeout(onComplete, 3900);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, []);
+
+  const arcs = [
+    { r: 60,  stroke: 0.35, width: 1.2, dash: "90 190",  dur: "4s",    dir: "normal",  delay: "0s" },
+    { r: 78,  stroke: 0.2,  width: 0.8, dash: "50 140",   dur: "6s",    dir: "reverse", delay: "0.2s" },
+    { r: 96,  stroke: 0.3,  width: 1.0, dash: "120 100",  dur: "5s",    dir: "normal",  delay: "0.1s" },
+    { r: 114, stroke: 0.15, width: 0.6, dash: "30 200",   dur: "7s",    dir: "reverse", delay: "0.3s" },
+    { r: 130, stroke: 0.25, width: 0.8, dash: "80 160",   dur: "4.5s",  dir: "normal",  delay: "0.15s" },
+    { r: 148, stroke: 0.12, width: 0.5, dash: "60 180",   dur: "8s",    dir: "reverse", delay: "0.4s" },
+  ];
+
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 1000, background: "#000",
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      opacity: fadeOut ? 0 : 1, transition: "opacity 0.7s ease-out",
+    }}>
+      <style>{`
+        @keyframes loaderSpin{to{transform:rotate(360deg);}}
+        @keyframes loaderPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:1;transform:scale(1.15);}}
+        @keyframes loaderFadeIn{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
+        @keyframes loaderText{from{opacity:0;letter-spacing:12px;}to{opacity:1;letter-spacing:6px;}}
+      `}</style>
+
+      <div style={{ position: "relative", width: 320, height: 320, animation: "loaderFadeIn 1s ease-out both" }}>
+        <svg viewBox="0 0 320 320" style={{ width: "100%", height: "100%" }}>
+          {arcs.map((a, i) => (
+            <circle
+              key={i}
+              cx="160" cy="160" r={a.r}
+              fill="none"
+              stroke={`rgba(255,255,255,${a.stroke})`}
+              strokeWidth={a.width}
+              strokeDasharray={a.dash}
+              strokeLinecap="round"
+              style={{
+                transformOrigin: "160px 160px",
+                animation: `loaderSpin ${a.dur} linear infinite ${a.dir}`,
+                animationDelay: a.delay,
+              }}
+            />
+          ))}
+
+          {/* Center glow */}
+          <circle cx="160" cy="160" r="18" fill="url(#centerGlow)" style={{ animation: "loaderPulse 3s ease-in-out infinite" }} />
+          <circle cx="160" cy="160" r="3" fill="rgba(255,255,255,0.8)" />
+
+          {/* Tiny red accent dot on one arc */}
+          <circle cx="160" cy="160" r="2.5" fill="#FC3D21" style={{ transformOrigin: "160px 160px", animation: "loaderSpin 4s linear infinite", offset: "auto" }}>
+            <animateMotion dur="4s" repeatCount="indefinite" path={`M 0,-60 A 60,60 0 1,1 0,60 A 60,60 0 1,1 0,-60`} />
+          </circle>
+
+          <defs>
+            <radialGradient id="centerGlow">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.25)" />
+              <stop offset="60%" stopColor="rgba(255,255,255,0.05)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div style={{
+        fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 6,
+        color: "#555", textTransform: "uppercase", marginTop: 32,
+        animation: "loaderText 1.2s ease-out 0.5s both",
+      }}>
+        Loading Crew Manifest
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════════
    MAIN COMPONENT
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 export default function NASAResume() {
+  const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState(null);
   const toggle = (i) => setExpanded(expanded === i ? null : i);
   const [heroRef, heroVis] = useReveal(0.05);
@@ -287,6 +369,7 @@ export default function NASAResume() {
         }
       `}</style>
 
+      {loading && <AILoader onComplete={() => setLoading(false)} />}
       <Stars />
 
       {/* ─── NAV ─────────────────────────────────────────────────────────────── */}
