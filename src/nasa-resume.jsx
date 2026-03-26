@@ -63,12 +63,12 @@ function Stars() {
     let raf;
     const resize = () => { c.width = window.innerWidth; c.height = window.innerHeight; };
     resize(); window.addEventListener("resize", resize);
-    const stars = Array.from({ length: 160 }, () => ({
+    const stars = Array.from({ length: 220 }, () => ({
       x: Math.random(), y: Math.random(),
-      r: Math.random() * 0.9 + 0.1,
-      o: Math.random() * 0.25 + 0.03,
+      r: Math.random() * 1.3 + 0.2,
+      o: Math.random() * 0.55 + 0.1,
       t: Math.random() * Math.PI * 2,
-      s: Math.random() * 0.005 + 0.001,
+      s: Math.random() * 0.008 + 0.002,
     }));
     const draw = () => {
       ctx.clearRect(0, 0, c.width, c.height);
