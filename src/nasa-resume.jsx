@@ -92,44 +92,44 @@ function Stars() {
 
 function OrbitalVis() {
   return (
-    <svg viewBox="0 0 400 400" style={{ width: "100%", maxWidth: 380, height: "auto", opacity: 0.9 }}>
+    <svg viewBox="0 0 400 400" style={{ width: "100%", maxWidth: 380, height: "auto" }}>
       {/* Orbit rings */}
-      <ellipse cx="200" cy="200" rx="180" ry="60" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="0.6" transform="rotate(-12 200 200)" />
-      <ellipse cx="200" cy="200" rx="130" ry="45" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.6" strokeDasharray="3 6" transform="rotate(8 200 200)" />
-      <ellipse cx="200" cy="200" rx="80" ry="30" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" transform="rotate(-5 200 200)" />
+      <ellipse cx="200" cy="200" rx="180" ry="60" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="0.8" transform="rotate(-12 200 200)" />
+      <ellipse cx="200" cy="200" rx="130" ry="45" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.8" strokeDasharray="4 8" transform="rotate(8 200 200)" />
+      <ellipse cx="200" cy="200" rx="80" ry="30" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="0.6" transform="rotate(-5 200 200)" />
 
       {/* Center point */}
-      <circle cx="200" cy="200" r="3" fill="rgba(255,255,255,0.15)" />
-      <circle cx="200" cy="200" r="1.2" fill="rgba(255,255,255,0.4)" />
+      <circle cx="200" cy="200" r="4" fill="rgba(255,255,255,0.3)" />
+      <circle cx="200" cy="200" r="1.5" fill="rgba(255,255,255,0.7)" />
 
       {/* Crosshair at center */}
-      <line x1="192" y1="200" x2="208" y2="200" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
-      <line x1="200" y1="192" x2="200" y2="208" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
+      <line x1="188" y1="200" x2="212" y2="200" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+      <line x1="200" y1="188" x2="200" y2="212" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
 
       {/* + markers */}
-      <text x="148" y="157" fill="rgba(255,255,255,0.2)" fontSize="11" fontFamily="'Space Mono', monospace" textAnchor="middle">+</text>
-      <text x="262" y="247" fill="rgba(255,255,255,0.15)" fontSize="11" fontFamily="'Space Mono', monospace" textAnchor="middle">+</text>
+      <text x="148" y="157" fill="rgba(255,255,255,0.5)" fontSize="12" fontFamily="'Space Mono', monospace" textAnchor="middle">+</text>
+      <text x="262" y="247" fill="rgba(255,255,255,0.4)" fontSize="12" fontFamily="'Space Mono', monospace" textAnchor="middle">+</text>
 
       {/* - markers */}
-      <text x="315" y="185" fill="rgba(255,255,255,0.12)" fontSize="12" fontFamily="'Space Mono', monospace" textAnchor="middle">−</text>
+      <text x="315" y="185" fill="rgba(255,255,255,0.35)" fontSize="13" fontFamily="'Space Mono', monospace" textAnchor="middle">−</text>
 
       {/* ○ marker */}
-      <circle cx="100" cy="213" r="5" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.8" />
+      <circle cx="100" cy="213" r="5.5" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
 
       {/* Orbiting red dot — outer ring */}
       <g style={{ animation: "orbit 30s linear infinite", transformOrigin: "200px 200px" }}>
-        <circle cx="380" cy="200" r="3.5" fill="#FC3D21" />
-        <circle cx="380" cy="200" r="7" fill="rgba(252,61,33,0.15)" />
+        <circle cx="380" cy="200" r="4" fill="#FC3D21" />
+        <circle cx="380" cy="200" r="10" fill="rgba(252,61,33,0.2)" />
       </g>
 
       {/* Orbiting white dot — inner ring */}
       <g style={{ animation: "orbit 18s linear infinite reverse", transformOrigin: "200px 200px" }}>
-        <circle cx="280" cy="200" r="2" fill="rgba(255,255,255,0.5)" />
+        <circle cx="280" cy="200" r="2.5" fill="rgba(255,255,255,0.7)" />
       </g>
 
       {/* Small labels along orbits */}
-      <text x="345" y="168" fill="rgba(255,255,255,0.1)" fontSize="7" fontFamily="'Space Mono', monospace" letterSpacing="2">TRAJECTORY</text>
-      <text x="55" y="240" fill="rgba(255,255,255,0.08)" fontSize="7" fontFamily="'Space Mono', monospace" letterSpacing="2">PERIAPSIS</text>
+      <text x="345" y="168" fill="rgba(255,255,255,0.3)" fontSize="8" fontFamily="'Space Mono', monospace" letterSpacing="2">TRAJECTORY</text>
+      <text x="55" y="240" fill="rgba(255,255,255,0.25)" fontSize="8" fontFamily="'Space Mono', monospace" letterSpacing="2">PERIAPSIS</text>
     </svg>
   );
 }
