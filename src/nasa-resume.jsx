@@ -264,7 +264,7 @@ export default function NASAResume() {
   const [expRef, expVis] = useReveal();
   const [skillRef, skillVis] = useReveal();
   const [contactRef, contactVis] = useReveal();
-  const years = useCounter(14, 1200, heroVis);
+  const years = useCounter(15, 1200, heroVis);
 
   return (
     <div style={{ minHeight: "100vh", background: "#000", color: "#999", fontFamily: "'Inter', sans-serif", position: "relative", overflowX: "hidden" }}>
@@ -308,7 +308,7 @@ export default function NASAResume() {
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, letterSpacing: 4, color: "#555", textTransform: "uppercase" }}>AI Developer</div>
 
             <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "#444", marginTop: 32, letterSpacing: 2 }}>
-              AUSTIN, TX &nbsp;·&nbsp; {years > 0 ? years : 14}+ YRS
+              AUSTIN, TX &nbsp;·&nbsp; {years > 0 ? years : 15}+ YRS
             </div>
           </div>
 
@@ -319,7 +319,7 @@ export default function NASAResume() {
 
           {/* Right — Metrics */}
           <div className="hero-metrics" style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-            <Metric label="Experience" value={`${years > 0 ? years : 14}+ Years`} delay={0.2} />
+            <Metric label="Experience" value={`${years > 0 ? years : 15}+ Years`} delay={0.2} />
             <Metric label="Missions" value="007" delay={0.35} />
             <Metric label="Status" value="Active" delay={0.5} />
             <Metric label="Clearance" value="Open" delay={0.65} />
